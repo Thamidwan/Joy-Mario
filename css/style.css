@@ -37,8 +37,17 @@ h1 em,h2 em,.story-side em,.collection-aside em { color: var(--teal); font-weigh
 .hero-footnote { position: absolute; bottom: 28px; left: 0; right: 8%; display: flex; align-items: center; justify-content: space-between; color: #77756d; font-size: 8px; letter-spacing: .12em; }
 .hero-footnote svg { color: var(--teal); }
 .hero-image-wrap { position: relative; min-height: 565px; overflow: hidden; background: #d9d0c0; }
-.hero-image { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: center 56%; }
-.image-stamp { position: absolute; top: 34px; right: 33px; width: 83px; height: 83px; border: 1px solid rgba(255,255,255,.85); border-radius: 50%; display: flex; align-items: center; justify-content: center; flex-direction: column; color: white; text-align: center; font-size: 10px; line-height: 1.08; letter-spacing: .15em; transform: rotate(9deg); }
+.hero-image { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: center 56%; opacity: 0; transform: scale(1.04); transition: opacity 1.2s ease, transform 6s ease; }
+.hero-image.is-active { opacity: 1; transform: scale(1); }
+.hero-counter { font-variant-numeric: tabular-nums; }
+.hero-caption-text { padding: 0 !important; transition: opacity .4s ease; }
+@keyframes stamp-spin { from { transform: rotate(9deg); } to { transform: rotate(369deg); } }
+.image-stamp { position: absolute; top: 34px; right: 33px; width: 83px; height: 83px; border: 1px solid rgba(255,255,255,.85); border-radius: 50%; display: flex; align-items: center; justify-content: center; flex-direction: column; color: white; text-align: center; font-size: 10px; line-height: 1.08; letter-spacing: .15em; transform: rotate(9deg); z-index: 1; animation: stamp-spin 24s linear infinite; }
+.hero-image-caption { z-index: 1; }
+@media (prefers-reduced-motion: reduce) {
+  .image-stamp { animation: none; }
+  .hero-image { transition: opacity .3s ease; transform: none !important; }
+}
 .image-stamp i { font-family: Georgia,serif; font-size: 17px; letter-spacing: 0; }
 .hero-image-caption { position: absolute; bottom: 20px; right: 24px; color: white; font-size: 8px; letter-spacing: .17em; text-shadow: 0 1px 6px #333; }
 .hero-image-caption span { padding: 0 7px; }
@@ -232,3 +241,15 @@ h1 em,h2 em,.story-side em,.collection-aside em { color: var(--teal); font-weigh
   .footer-note { order: 3; width: 100%; }
   .footer-copy { margin-left: auto; }
 }
+
+/* WhatsApp chat button */
+.whatsapp-button { position: fixed; right: 22px; bottom: 22px; z-index: 50; display: inline-flex; align-items: center; gap: 10px; padding: 12px 18px 12px 14px; border-radius: 99px; background: #25d366; color: #fff; font-size: 12px; font-weight: 600; letter-spacing: .02em; box-shadow: 0 8px 24px rgba(32,33,29,.22); transition: transform .25s ease, box-shadow .25s ease, background .25s ease; animation: whatsapp-in .6s ease 1.2s both; }
+.whatsapp-button:hover { background: #1ebe5b; transform: translateY(-3px); box-shadow: 0 12px 28px rgba(32,33,29,.28); }
+.whatsapp-button:focus-visible { outline: 2px solid var(--teal); outline-offset: 3px; }
+.whatsapp-button svg { flex: 0 0 auto; }
+@keyframes whatsapp-in { from { opacity: 0; transform: translateY(16px) scale(.9); } to { opacity: 1; transform: none; } }
+@media (max-width: 600px) {
+  .whatsapp-button { right: 16px; bottom: 16px; padding: 14px; }
+  .whatsapp-button span { display: none; }
+}
+@media (prefers-reduced-motion: reduce) { .whatsapp-button { animation: none; transition: none; } }
