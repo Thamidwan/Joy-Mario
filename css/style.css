@@ -253,3 +253,6 @@ h1 em,h2 em,.story-side em,.collection-aside em { color: var(--teal); font-weigh
   .whatsapp-button span { display: none; }
 }
 @media (prefers-reduced-motion: reduce) { .whatsapp-button { animation: none; transition: none; } }
+
+/* Hide decorative arrow icons on mobile */
+@media (max-width: 800px) { .arrow { display: none !important; } }
