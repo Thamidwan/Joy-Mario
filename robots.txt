@@ -1,0 +1,5 @@
+# robots.txt for Joy & Mario SA
+User-agent: *
+Allow: /
+
+Sitemap: https://www.joyandmario.co.za/sitemap.xml

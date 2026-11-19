@@ -112,3 +112,10 @@ const WHATSAPP_MESSAGE = "Hi Joy & Mario! I'd love some help finding the right p
     <span>Chat with us</span>`
   document.body.appendChild(link)
 })()
+
+// Sticky navbar: compact style once the page is scrolled
+document.querySelectorAll('.site-header').forEach((header) => {
+  const update = () => header.classList.toggle('is-scrolled', window.scrollY > 40)
+  update()
+  window.addEventListener('scroll', update, { passive: true })
+})
